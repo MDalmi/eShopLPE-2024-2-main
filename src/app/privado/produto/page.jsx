@@ -38,6 +38,9 @@ export default async function Categoria() {
                             <th style={{ textAlign: 'center' }}>Ações</th>
                             <th>Código</th>
                             <th>Nome</th>
+                            <th>Estoque</th>
+                            <th>Ativo</th>
+                            <th>Nome da Categoria</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,7 +53,7 @@ export default async function Categoria() {
                                             <i className="bi bi-pencil-square"></i>
                                         </Link>
                                         <form
-                                            action={deleteProduto.bind(null, produto.codigo)}
+                                            action={deleteCategoria.bind(null, produto.codigo)}
                                             className="d-inline">
                                             <Button className="btn btn-danger" title="Excluir"
                                                 type="submit">

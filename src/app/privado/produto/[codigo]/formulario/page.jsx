@@ -64,6 +64,14 @@ const FormularioPage = async ({ params }) => {
                                             name="nome" />
                                     </FloatingLabel>
                                 </div>
+                                <div>
+                                    <FloatingLabel controlId="campoNome"
+                                        label="Nome" className="mb-3">
+                                        <Form.Control type="text"
+                                            defaultValue={produto.nome} required
+                                            name="nome" />
+                                    </FloatingLabel>
+                                </div>
                                 <div className="form-group text-center mt-3">
                                     <button type="submit" className="btn btn-success">
                                         Salvar <i className="bi bi-save"></i>
