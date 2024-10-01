@@ -1,6 +1,6 @@
 import { Table } from "react-bootstrap";
 import { Button } from "react-bootstrap";
-import { getProdutoDB, deleteProdutoDB } from "@/componentes/bd/usecases/produtoUseCases";
+import { getProdutosDB, deleteProdutoDB } from "@/componentes/bd/usecases/produtoUseCases";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import Link from "next/link";
@@ -19,11 +19,11 @@ const deleteProduto = async (codigo) => {
     redirect('/privado/produto/');
 }
 
-export default async function Categoria() {
+export default async function Produto() {
 
     revalidatePath('/privado/produto/');
 
-    const produtos = await getProdutoDB();
+    const produtos = await getProdutosDB();
 
     return (
         <Suspense fallback={<Loading />}>
@@ -40,7 +40,7 @@ export default async function Categoria() {
                             <th>Nome</th>
                             <th>Estoque</th>
                             <th>Ativo</th>
-                            <th>Nome da Categoria</th>
+                            <th>Categoria</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,7 +53,7 @@ export default async function Categoria() {
                                             <i className="bi bi-pencil-square"></i>
                                         </Link>
                                         <form
-                                            action={deleteCategoria.bind(null, produto.codigo)}
+                                            action={deleteProduto.bind(null, produto.codigo)}
                                             className="d-inline">
                                             <Button className="btn btn-danger" title="Excluir"
                                                 type="submit">
@@ -63,10 +63,9 @@ export default async function Categoria() {
                                     </td>
                                     <td>{produto.codigo}</td>
                                     <td>{produto.nome}</td>
-                                    <td>{produto.estoque}</td>
-                                    <td>{produto.ativo}</td>
-                                    <td>{produto.categora_nome}</td>
-                                    
+                                    <td>{produto.quantidade_estoque}</td>
+                                    <td>{produto.ativo ? 'SIM' : 'NÃO'}</td>
+                                    <td>{produto.categoria_nome}</td>
                                 </tr>
                             ))
                         }
