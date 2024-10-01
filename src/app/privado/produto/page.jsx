@@ -50,7 +50,7 @@ export default async function Categoria() {
                                             <i className="bi bi-pencil-square"></i>
                                         </Link>
                                         <form
-                                            action={deleteCategoria.bind(null, produto.codigo)}
+                                            action={deleteProduto.bind(null, produto.codigo)}
                                             className="d-inline">
                                             <Button className="btn btn-danger" title="Excluir"
                                                 type="submit">

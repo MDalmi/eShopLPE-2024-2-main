@@ -92,5 +92,5 @@ const getProdutoPorCodigoDB = async (codigo) => {
 }
 
 module.exports = {
-    getProdutosDB, addProdutoDB, updateProdutoDB, deleteProdutoDB, getProdutoPorCodigoDB
+    getProdutoDB, addProdutoDB, updateProdutoDB, deleteProdutoDB, getProdutoPorCodigoDB
 }
