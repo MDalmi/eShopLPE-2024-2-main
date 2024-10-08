@@ -1,4 +1,4 @@
-export default function FormularioPro( salvarProduto, produto) {
+export default function FormularioPro({ salvarProduto, produto }) {
 
     return (
         <>
