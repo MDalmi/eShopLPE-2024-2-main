@@ -1,4 +1,4 @@
-export default function FormularioCat() {
+export default function FormularioCat( salvarCategoria , categoria) {
 
     return (
         <>

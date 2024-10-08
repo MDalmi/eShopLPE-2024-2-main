@@ -1,4 +1,4 @@
-export default function TabelaCat() {
+export default function FormularioPro( salvarProduto, produto) {
 
     return (
         <>

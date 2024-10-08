@@ -6,6 +6,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Suspense } from 'react';
 import Loading from '@/componentes/comuns/Loading';
+import FormularioPro from "@/componentes/reaproveitaveis/FormularioPro";
 
 const FormularioPage = async ({ params }) => {
 
@@ -59,7 +60,7 @@ const FormularioPage = async ({ params }) => {
                 <div style={{ textAlign: 'center' }}>
                     <h2>Produto</h2>
                 </div>
-                
+                <FormularioPro salvarProduto={salvarProduto} produto={produto}/>
             </Suspense>
         </>
     )

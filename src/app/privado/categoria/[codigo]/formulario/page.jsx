@@ -45,7 +45,7 @@ const FormularioPage = async ({ params }) => {
                 <div style={{ textAlign: 'center' }}>
                     <h2>Categoria</h2>
                 </div>
-                <FormularioCat/>
+                <FormularioCat salvarCategoria={salvarCategoria} categoria={categoria}/>
             </Suspense>
         </>
     )
