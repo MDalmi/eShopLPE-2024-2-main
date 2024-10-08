@@ -1,4 +1,7 @@
-export default function Detalhes() {
+import Link from "next/link";
+
+export default function Detalhes( produto ) {
+
 
     return (
         <>

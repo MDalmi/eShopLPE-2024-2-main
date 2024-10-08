@@ -15,7 +15,7 @@ const ProdutoDetalhe = async ({ params }) => {
 
     return (
         <Suspense fallback={<Loading />}>
-            <Detalhes/>
+            <Detalhes produto={produto}/>
         </Suspense>
     )
 }
