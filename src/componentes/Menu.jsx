@@ -4,16 +4,21 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Link from 'next/link';
-import { signIn, signOut } from 'next-auth/react';
+import { signIn, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/auth/auth";
 
 
 function Menu() {
+  const { data: session } = useSession();
+
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Link className='navbar-brand' href={'/'}>eShop Next 14</Link>
+        <Link className="navbar-brand" href={`/`}>eShop Next 14 </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav" >
+        <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Link className="nav-link" href={`/`}>Home</Link>
             {session != null &&

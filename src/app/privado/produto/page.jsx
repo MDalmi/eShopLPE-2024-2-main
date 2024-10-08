@@ -19,7 +19,20 @@ const deleteProduto = async (codigo) => {
     redirect('/privado/produto/');
 }
 
+//importações
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/auth/auth";
+
+// na função do componente
 export default async function Produto() {
+
+    // acessa a sessão
+    const session = await getServerSession(authOptions);
+
+    //se não tem sessão válida redireciona para a tela de login
+    if (!session) {
+        redirect("/api/auth/signin");
+    }
 
     revalidatePath('/privado/produto/');
 
