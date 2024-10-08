@@ -1,4 +1,7 @@
-export default function FormularioPro({ salvarProduto, produto }) {
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import Form from 'react-bootstrap/Form';
+
+export default function FormularioPro({ salvarProduto, produto, categorias }) {
 
     return (
         <>

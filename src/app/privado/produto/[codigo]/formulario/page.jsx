@@ -60,8 +60,8 @@ const FormularioPage = async ({ params }) => {
                 <div style={{ textAlign: 'center' }}>
                     <h2>Produto</h2>
                 </div>
-                <FormularioPro salvarProduto={salvarProduto} produto={produto}/>
-            </Suspense>
+                <FormularioPro salvarProduto={salvarProduto} produto={produto} categorias={categorias}/>
+                </Suspense>
         </>
     )
 
