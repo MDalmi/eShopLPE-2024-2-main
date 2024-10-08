@@ -1,5 +1,5 @@
 import CredentialsProvider from "next-auth/providers/credentials";
-import { autenticaUsuarioDB } from "@/bd/useCases/usuarioUseCases";
+import { autenticaUsuarioDB } from "@/componentes/bd/usecases/usuarioUseCases";
 
 export const authOptions = {
     session: {
