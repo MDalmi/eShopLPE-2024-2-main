@@ -6,8 +6,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Link from 'next/link';
 import { signIn, signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/auth/auth";
+
 
 
 function Menu() {
