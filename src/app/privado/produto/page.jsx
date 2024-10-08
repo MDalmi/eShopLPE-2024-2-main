@@ -1,12 +1,10 @@
-import { Table } from "react-bootstrap";
-import { Button } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 import { getProdutosDB, deleteProdutoDB } from "@/componentes/bd/usecases/produtoUseCases";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import Link from "next/link";
 import { Suspense } from 'react';
 import Loading from '@/componentes/comuns/Loading';
-import Tabela from "@/componentes/reaproveitaveis/TabelaPro";
 import TabelaPro from "@/componentes/reaproveitaveis/TabelaPro";
 
 const deleteProduto = async (codigo) => {
@@ -22,9 +20,6 @@ const deleteProduto = async (codigo) => {
 }
 
 export default async function Produto() {
-
-    revalidatePath('/privado/produto/');
-
     const produtos = await getProdutosDB();
 
     return (
@@ -48,10 +43,9 @@ export default async function Produto() {
                     <tbody>
                         {
                             produtos.map((produto) => (
-                                <TabelaPro produto={produto}/>
+                                <TabelaPro key={produto.codigo} produto={produto} />
                             ))
                         }
-
                     </tbody>
                 </Table>
             </div>

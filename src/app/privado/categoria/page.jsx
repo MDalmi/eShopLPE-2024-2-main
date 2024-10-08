@@ -1,5 +1,4 @@
-import { Table } from "react-bootstrap";
-import { Button } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 import { getCategoriasDB, deleteCategoriaDB } from "@/componentes/bd/usecases/categoriaUseCases";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
@@ -18,19 +17,15 @@ const deleteCategoria = async (codigo) => {
     }
     revalidatePath('/privado/categoria/');
     redirect('/privado/categoria/');
-}
+};
 
 export default async function Categoria() {
-
-    revalidatePath('/privado/categoria/');
-
     const categorias = await getCategoriasDB();
 
     return (
         <Suspense fallback={<Loading />}>
             <div style={{ padding: '20px' }}>
-                <Link href={`/privado/categoria/${0}/formulario`}
-                    className="btn btn-primary">
+                <Link href={`/privado/categoria/${0}/formulario`} className="btn btn-primary">
                     <i className="bi bi-file-earmark-plus"></i> Novo
                 </Link>
                 <Table striped bordered hover>
@@ -44,13 +39,12 @@ export default async function Categoria() {
                     <tbody>
                         {
                             categorias.map((categoria) => (
-                                <TabelaCat categoria={categoria}/>
+                                <TabelaCat key={categoria.codigo} categoria={categoria} deleteCategoria={deleteCategoria} />
                             ))
                         }
-
                     </tbody>
                 </Table>
             </div>
         </Suspense>
-    )
+    );
 }

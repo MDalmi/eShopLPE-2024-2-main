@@ -1,18 +1,20 @@
-export default function TabelaPro({produto}) {
+export default function TabelaPro({ produto }) {
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        await deleteProduto(produto.codigo); // Chama a função delete diretamente
+    };
 
     return (
         <>
-            <tr key={produto.codigo}>
+            <tr>
                 <td align="center">
                     <Link className="btn btn-info" title="Editar"
                         href={`/privado/produto/${produto.codigo}/formulario`}>
                         <i className="bi bi-pencil-square"></i>
                     </Link>
-                    <form
-                        action={deleteProduto.bind(null, produto.codigo)}
-                        className="d-inline">
-                        <Button className="btn btn-danger" title="Excluir"
-                            type="submit">
+                    <form onSubmit={handleSubmit} className="d-inline">
+                        <Button className="btn btn-danger" title="Excluir" type="submit">
                             <i className="bi bi-trash"></i>
                         </Button>
                     </form>
@@ -24,5 +26,5 @@ export default function TabelaPro({produto}) {
                 <td>{produto.categoria_nome}</td>
             </tr>
         </>
-    )
+    );
 }
