@@ -6,6 +6,7 @@ import { revalidatePath } from "next/cache";
 import Link from "next/link";
 import { Suspense } from 'react';
 import Loading from '@/componentes/comuns/Loading';
+import TabelaCat from "@/componentes/reaproveitaveis/TabelaCat";
 
 const deleteCategoria = async (codigo) => {
     'use server'
@@ -43,24 +44,7 @@ export default async function Categoria() {
                     <tbody>
                         {
                             categorias.map((categoria) => (
-                                <tr key={categoria.codigo}>
-                                    <td align="center">
-                                        <Link className="btn btn-info" title="Editar"
-                                            href={`/privado/categoria/${categoria.codigo}/formulario`}>
-                                            <i className="bi bi-pencil-square"></i>
-                                        </Link>
-                                        <form
-                                            action={deleteCategoria.bind(null, categoria.codigo)}
-                                            className="d-inline">
-                                            <Button className="btn btn-danger" title="Excluir"
-                                                type="submit">
-                                                <i className="bi bi-trash"></i>
-                                            </Button>
-                                        </form>
-                                    </td>
-                                    <td>{categoria.codigo}</td>
-                                    <td>{categoria.nome}</td>
-                                </tr>
+                                <TabelaCat/>
                             ))
                         }
 

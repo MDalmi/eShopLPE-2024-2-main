@@ -6,6 +6,8 @@ import { revalidatePath } from "next/cache";
 import Link from "next/link";
 import { Suspense } from 'react';
 import Loading from '@/componentes/comuns/Loading';
+import Tabela from "@/componentes/reaproveitaveis/TabelaPro";
+import TabelaPro from "@/componentes/reaproveitaveis/TabelaPro";
 
 const deleteProduto = async (codigo) => {
     'use server'
@@ -46,27 +48,7 @@ export default async function Produto() {
                     <tbody>
                         {
                             produtos.map((produto) => (
-                                <tr key={produto.codigo}>
-                                    <td align="center">
-                                        <Link className="btn btn-info" title="Editar"
-                                            href={`/privado/produto/${produto.codigo}/formulario`}>
-                                            <i className="bi bi-pencil-square"></i>
-                                        </Link>
-                                        <form
-                                            action={deleteProduto.bind(null, produto.codigo)}
-                                            className="d-inline">
-                                            <Button className="btn btn-danger" title="Excluir"
-                                                type="submit">
-                                                <i className="bi bi-trash"></i>
-                                            </Button>
-                                        </form>
-                                    </td>
-                                    <td>{produto.codigo}</td>
-                                    <td>{produto.nome}</td>
-                                    <td>{produto.quantidade_estoque}</td>
-                                    <td>{produto.ativo ? 'SIM' : 'NÃO'}</td>
-                                    <td>{produto.categoria_nome}</td>
-                                </tr>
+                                <TabelaPro/>
                             ))
                         }
 
