@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Link from 'next/link';
-import { signIN, signOut } from 'next-auth/react';
+import { signIn, signOut } from 'next-auth/react';
 
 
 function Menu() {
@@ -20,9 +20,9 @@ function Menu() {
               <Link className='dropdown-item' href={'/privado/categoria'}>Categorias</Link>
               <Link className='dropdown-item' href={'/privado/produto'}>Produtos</Link>
             </NavDropdown>
-            <NavDropdown title="Login" id="basic-nav-dropdown">
-              <form action={signIN}>
-                <button type='submit'>Login</button>
+            <NavDropdown title='Login' id="basic-nav-dropdown">
+              <form action={signIn}>
+                <button type="submit" className="dropdown-item">Login</button>
               </form>
               <form action={() => signOut({ callbackUrl: '/' })}>
                 <button type="submit" className="dropdown-item">Logout</button>
