@@ -48,7 +48,7 @@ export default async function Produto() {
                     <tbody>
                         {
                             produtos.map((produto) => (
-                                <TabelaPro/>
+                                <TabelaPro produto={produto}/>
                             ))
                         }
 

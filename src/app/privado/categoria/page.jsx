@@ -44,7 +44,7 @@ export default async function Categoria() {
                     <tbody>
                         {
                             categorias.map((categoria) => (
-                                <TabelaCat/>
+                                <TabelaCat categoria={categoria}/>
                             ))
                         }
 

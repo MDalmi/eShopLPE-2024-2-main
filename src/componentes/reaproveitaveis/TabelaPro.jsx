@@ -1,4 +1,4 @@
-export default function TabelaPro() {
+export default function TabelaPro({produto}) {
 
     return (
         <>

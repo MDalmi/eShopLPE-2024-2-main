@@ -1,4 +1,4 @@
-export default function TabelaCat() {
+export default function TabelaCat({categoria}) {
 
     return (
         <>
