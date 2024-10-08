@@ -1,7 +1,7 @@
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 
-export default function FormularioCat({ salvarCategoria, categoria }) { // Receba as props
+export default function FormularioCat({ salvarCategoria, categoria }) { 
 
     return (
         <>
@@ -13,7 +13,7 @@ export default function FormularioCat({ salvarCategoria, categoria }) { // Receb
                                 <FloatingLabel controlId="campoCodigo" label="Código" className="mb-3">
                                     <Form.Control
                                         type="number"
-                                        defaultValue={categoria.codigo}  // Use a prop 'categoria'
+                                        defaultValue={categoria.codigo} 
                                         readOnly
                                         name="codigo"
                                     />
@@ -23,7 +23,7 @@ export default function FormularioCat({ salvarCategoria, categoria }) { // Receb
                                 <FloatingLabel controlId="campoNome" label="Nome" className="mb-3">
                                     <Form.Control
                                         type="text"
-                                        defaultValue={categoria.nome}  // Use a prop 'categoria'
+                                        defaultValue={categoria.nome}  
                                         required
                                         name="nome"
                                     />

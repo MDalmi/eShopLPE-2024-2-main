@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Detalhes({ produto }) {  // Desestruture o objeto 'produto'
+export default function Detalhes({ produto }) { 
 
     return (
         <>
