@@ -1,11 +1,11 @@
-import { Table, Button } from "react-bootstrap";
+import { Table } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { getCategoriasDB, deleteCategoriaDB } from "@/componentes/bd/usecases/categoriaUseCases";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import Link from "next/link";
 import { Suspense } from 'react';
 import Loading from '@/componentes/comuns/Loading';
-import TabelaCat from "@/componentes/reaproveitaveis/TabelaCat";
 
 const deleteCategoria = async (codigo) => {
     'use server'
@@ -17,15 +17,19 @@ const deleteCategoria = async (codigo) => {
     }
     revalidatePath('/privado/categoria/');
     redirect('/privado/categoria/');
-};
+}
 
 export default async function Categoria() {
+
+    revalidatePath('/privado/categoria/');
+
     const categorias = await getCategoriasDB();
 
     return (
         <Suspense fallback={<Loading />}>
             <div style={{ padding: '20px' }}>
-                <Link href={`/privado/categoria/${0}/formulario`} className="btn btn-primary">
+                <Link href={`/privado/categoria/${0}/formulario`}
+                    className="btn btn-primary">
                     <i className="bi bi-file-earmark-plus"></i> Novo
                 </Link>
                 <Table striped bordered hover>
@@ -39,12 +43,30 @@ export default async function Categoria() {
                     <tbody>
                         {
                             categorias.map((categoria) => (
-                                <TabelaCat key={categoria.codigo} categoria={categoria} deleteCategoria={deleteCategoria} />
+                                <tr key={categoria.codigo}>
+                                    <td align="center">
+                                        <Link className="btn btn-info" title="Editar"
+                                            href={`/privado/categoria/${categoria.codigo}/formulario`}>
+                                            <i className="bi bi-pencil-square"></i>
+                                        </Link>
+                                        <form
+                                            action={deleteCategoria.bind(null, categoria.codigo)}
+                                            className="d-inline">
+                                            <Button className="btn btn-danger" title="Excluir"
+                                                type="submit">
+                                                <i className="bi bi-trash"></i>
+                                            </Button>
+                                        </form>
+                                    </td>
+                                    <td>{categoria.codigo}</td>
+                                    <td>{categoria.nome}</td>
+                                </tr>
                             ))
                         }
+
                     </tbody>
                 </Table>
             </div>
         </Suspense>
-    );
+    )
 }

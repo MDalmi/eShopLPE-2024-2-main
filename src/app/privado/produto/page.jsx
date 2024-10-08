@@ -1,11 +1,11 @@
-import { Table, Button } from "react-bootstrap";
+import { Table } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { getProdutosDB, deleteProdutoDB } from "@/componentes/bd/usecases/produtoUseCases";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import Link from "next/link";
 import { Suspense } from 'react';
 import Loading from '@/componentes/comuns/Loading';
-import TabelaPro from "@/componentes/reaproveitaveis/TabelaPro";
 
 const deleteProduto = async (codigo) => {
     'use server'
@@ -20,6 +20,9 @@ const deleteProduto = async (codigo) => {
 }
 
 export default async function Produto() {
+
+    revalidatePath('/privado/produto/');
+
     const produtos = await getProdutosDB();
 
     return (
@@ -43,9 +46,30 @@ export default async function Produto() {
                     <tbody>
                         {
                             produtos.map((produto) => (
-                                <TabelaPro key={produto.codigo} produto={produto} />
+                                <tr key={produto.codigo}>
+                                    <td align="center">
+                                        <Link className="btn btn-info" title="Editar"
+                                            href={`/privado/produto/${produto.codigo}/formulario`}>
+                                            <i className="bi bi-pencil-square"></i>
+                                        </Link>
+                                        <form
+                                            action={deleteProduto.bind(null, produto.codigo)}
+                                            className="d-inline">
+                                            <Button className="btn btn-danger" title="Excluir"
+                                                type="submit">
+                                                <i className="bi bi-trash"></i>
+                                            </Button>
+                                        </form>
+                                    </td>
+                                    <td>{produto.codigo}</td>
+                                    <td>{produto.nome}</td>
+                                    <td>{produto.quantidade_estoque}</td>
+                                    <td>{produto.ativo ? 'SIM' : 'NÃO'}</td>
+                                    <td>{produto.categoria_nome}</td>
+                                </tr>
                             ))
                         }
+
                     </tbody>
                 </Table>
             </div>
