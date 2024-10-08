@@ -15,20 +15,29 @@ function Menu() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" >
           <Nav className="me-auto">
-            <Link className='nav-link' href={'/'}>Home</Link>
-            <NavDropdown title="Manutenções" id="basic-nav-dropdown">
-              <Link className='dropdown-item' href={'/privado/categoria'}>Categorias</Link>
-              <Link className='dropdown-item' href={'/privado/produto'}>Produtos</Link>
+            <Link className="nav-link" href={`/`}>Home</Link>
+            {session != null &&
+              <NavDropdown title="Manutenções" id="basic-nav-dropdown">
+                <Link className="dropdown-item" href={`/privado/categoria`}>Categorias</Link>
+                <Link className="dropdown-item" href={`/privado/produto`}>Produtos</Link>
+              </NavDropdown>
+            }
+            <NavDropdown title={session == null ? 'Login' : session.user.name} id="basic-nav-dropdown">
+              {session == null &&
+                <form action={signIn}>
+                  <button type="submit" className="dropdown-item">Login</button>
+                </form>
+              }
+              {session != null &&
+                <>
+                  <Link className="dropdown-item" href={`/user`}>Meus Dados</Link>
+                  <form action={() => signOut({ callbackUrl: '/' })}>
+                    <button type="submit" className="dropdown-item">Logout</button>
+                  </form>
+                </>
+              }
             </NavDropdown>
-            <NavDropdown title='Login' id="basic-nav-dropdown">
-              <form action={signIn}>
-                <button type="submit" className="dropdown-item">Login</button>
-              </form>
-              <form action={() => signOut({ callbackUrl: '/' })}>
-                <button type="submit" className="dropdown-item">Logout</button>
-              </form>
-            </NavDropdown>
-            <Link className='nav-link active' href={'/sobre'}>Sobre...</Link>
+            <Link className="nav-link active" href={`/sobre`}>Sobre</Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
