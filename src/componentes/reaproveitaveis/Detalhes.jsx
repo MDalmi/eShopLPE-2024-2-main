@@ -1,7 +1,6 @@
 import Link from "next/link";
 
-export default function Detalhes( produto ) {
-
+export default function Detalhes({ produto }) {  // Desestruture o objeto 'produto'
 
     return (
         <>
@@ -20,7 +19,7 @@ export default function Detalhes( produto ) {
                                     <p className="card-text"><small className="text-muted">Categoria: {produto.categoria_nome}</small></p>
                                     <p className="card-text"><small className="text-muted">Estoque: {produto.quantidade_estoque}</small></p>
                                 </div>
-                                <div class="card-footer text-muted">
+                                <div className="card-footer text-muted">
                                     <Link className="btn btn-success" href={'/'}> Voltar</Link>
                                 </div>
                             </div>

@@ -1,4 +1,7 @@
-export default function FormularioCat( salvarCategoria , categoria) {
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import Form from 'react-bootstrap/Form';
+
+export default function FormularioCat({ salvarCategoria, categoria }) { // Receba as props
 
     return (
         <>
@@ -7,19 +10,23 @@ export default function FormularioCat( salvarCategoria , categoria) {
                     <div className="row justify-content-center">
                         <div className="col-12 col-md-6">
                             <div>
-                                <FloatingLabel controlId="campoCodigo"
-                                    label="Código" className="mb-3">
-                                    <Form.Control type="number"
-                                        defaultValue={categoria.codigo} readOnly
-                                        name="codigo" />
+                                <FloatingLabel controlId="campoCodigo" label="Código" className="mb-3">
+                                    <Form.Control
+                                        type="number"
+                                        defaultValue={categoria.codigo}  // Use a prop 'categoria'
+                                        readOnly
+                                        name="codigo"
+                                    />
                                 </FloatingLabel>
                             </div>
                             <div>
-                                <FloatingLabel controlId="campoNome"
-                                    label="Nome" className="mb-3">
-                                    <Form.Control type="text"
-                                        defaultValue={categoria.nome} required
-                                        name="nome" />
+                                <FloatingLabel controlId="campoNome" label="Nome" className="mb-3">
+                                    <Form.Control
+                                        type="text"
+                                        defaultValue={categoria.nome}  // Use a prop 'categoria'
+                                        required
+                                        name="nome"
+                                    />
                                 </FloatingLabel>
                             </div>
                             <div className="form-group text-center mt-3">
@@ -28,10 +35,8 @@ export default function FormularioCat( salvarCategoria , categoria) {
                                 </button>
                             </div>
                         </div>
-
                     </div>
                 </div>
-
             </form>
         </>
     )
